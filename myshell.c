@@ -137,3 +137,31 @@ int main() {
   }
   return 0;
 }
+/*実行結果
+ % make
+cc -D_GNU_SOURCE -Wall -std=c99 -o myshell myshell.c
+% ./myshell            <-myshellの実行
+Command: ls　　　　　　　<-外部コマンドの実行
+Makefile	README.md	README.pdf	a.txt		grep.txt	myshell		myshell.c
+Command: cd ..
+Command: ls
+kadai00-i20muraoka	kadai02-i20muraoka	kadai04-i20muraoka	kadai06-i20muraoka	kadai08-i20muraoka	kadai10-i20muraoka	kadai12-i20muraoka
+kadai01-i20muraoka	kadai03-i20muraoka	kadai05-i20muraoka	kadai07-i20muraoka	kadai09-i20muraoka	kadai11-i20muraoka
+Command: cd kadai12-i20muraoka
+Command: ls
+Makefile	README.md	README.pdf	a.txt		grep.txt	myshell		myshell.c
+Command: echo aaa bbb > aaa.txt  <-出力リダイレクト
+Command: ls
+Makefile	README.md	README.pdf	a.txt		aaa.txt		grep.txt	myshell		myshell.c <-aaa.txtが作成されたか
+Command: cat < aaa.txt    <-入力リダイレクト
+aaa bbb
+Command: echo aaa > aaa.txt 　　　　　<-出力リダイレクトでファイルを上書き
+Command: cat < aaa.txt
+aaa
+Command: chmod 000 aaa.txt      <-ファイルの保護モード変更
+Command: echo aaa bbb > aaa.txt <-出力リダイレクト
+aaa.txt: Permission denied
+Command: cat < aaa.txt
+aaa.txt: Permission denied
+Command: ^D
+*/
